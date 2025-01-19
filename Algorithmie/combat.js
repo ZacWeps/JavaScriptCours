@@ -45,3 +45,4 @@ class Personnage {
   }
   
   console.log("Fin du combat !");
+  
