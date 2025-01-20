@@ -1,48 +1,79 @@
 class Personnage {
     constructor(nom, pointsDeVie, attaque, precision) {
-        this.nom = nom;
-        this.pointsDeVie = pointsDeVie;
-        this.attaque = attaque;
-        this.precision = precision;
+      this.nom = nom;
+      this.pointsDeVie = pointsDeVie;
+      this.attaque = attaque;
+      this.precision = precision;
     }
   
     attaquer(adversaire) {
-        if (this.verifierPrecision()) {
-            adversaire.pointsDeVie -= this.attaque;
-            console.log(this.nom + " a touché " + adversaire.nom + " et inflige " + this.attaque + " points de dégâts !");
-        } else {
-            console.log(this.nom + " a raté son attaque sur " + adversaire.nom + " !");
-        }
+      if (this.verifierPrecision()) {
+        adversaire.pointsDeVie -= this.attaque;
+        if (adversaire.pointsDeVie < 0) adversaire.pointsDeVie = 0; 
+        return `${this.nom} a touché ${adversaire.nom} et inflige ${this.attaque} points de dégâts !`;
+      } else {
+        return `${this.nom} a raté son attaque sur ${adversaire.nom} !`;
+      }
     }
   
     verifierPrecision() {
-        const chance = Math.random();
-        return chance < this.precision;
+      return Math.random() < this.precision;
     }
   }
   
-  const combattant1 = new Personnage("Guerrier", 100, 15, 0.7);
-  const combattant2 = new Personnage("Archer", 80, 20, 0.6);
   
-  console.log("Le combat commence !");
-  while (combattant1.pointsDeVie > 0 && combattant2.pointsDeVie > 0) {
-    combattant1.attaquer(combattant2);
+  const combattant1 = new Personnage("Venus", 100, 15, 0.7);
+  const combattant2 = new Personnage("Jesus", 80, 20, 0.6);
   
-    if (combattant2.pointsDeVie <= 0) {
-        console.log( combattant2.nom + " est KO !" + combattant1.nom + " remporte le combat !");
-        break;
-    }
   
-    combattant2.attaquer(combattant1);
+  const fighter1HealthBar = document.getElementById("fighter1-health");
+  const fighter2HealthBar = document.getElementById("fighter2-health");
+  const fighter1HPText = document.getElementById("fighter1-hp");
+  const fighter2HPText = document.getElementById("fighter2-hp");
+  const logContainer = document.getElementById("log-container");
+  const startCombatBtn = document.getElementById("start-combat");
   
-    if (combattant1.pointsDeVie <= 0) {
-        console.log(combattant1.nom + " est KO !" + combattant2.nom + " remporte le combat !");
-        break;
-    }
   
-    console.log(combattant1.nom + combattant1.pointsDeVie + "PV");
-    console.log(combattant2.nom + combattant2.pointsDeVie + "PV");
+  function updateHealthBars() {
+    fighter1HealthBar.style.width = `${(combattant1.pointsDeVie / 100) * 100}%`;
+    fighter2HealthBar.style.width = `${(combattant2.pointsDeVie / 80) * 100}%`;
+  
+    fighter1HPText.textContent = `${combattant1.pointsDeVie} HP`;
+    fighter2HPText.textContent = `${combattant2.pointsDeVie} HP`;
   }
   
-  console.log("Fin du combat !");
+  
+  function logMessage(message) {
+    const logEntry = document.createElement("p");
+    logEntry.textContent = message;
+    logContainer.appendChild(logEntry);
+    logContainer.scrollTop = logContainer.scrollHeight;
+  }
+  
+  
+  startCombatBtn.addEventListener("click", () => {
+    logContainer.innerHTML = ""; 
+    combattant1.pointsDeVie = 100;
+    combattant2.pointsDeVie = 80;
+    updateHealthBars();
+  
+    const interval = setInterval(() => {
+      logMessage(combattant1.attaquer(combattant2));
+      updateHealthBars();
+  
+      if (combattant2.pointsDeVie <= 0) {
+        logMessage(`${combattant2.nom} est KO ! ${combattant1.nom} remporte le combat !`);
+        clearInterval(interval);
+        return;
+      }
+  
+      logMessage(combattant2.attaquer(combattant1));
+      updateHealthBars();
+  
+      if (combattant1.pointsDeVie <= 0) {
+        logMessage(`${combattant1.nom} est KO ! ${combattant2.nom} remporte le combat !`);
+        clearInterval(interval);
+      }
+    }, 1000); 
+  });
   

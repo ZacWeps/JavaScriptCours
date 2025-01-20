@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collection</title>
+  <link rel="stylesheet" href="mws1.css">
+  <script src="combat.js" defer></script>
+  <script src="darkmode.js" defer></script>
+</head>
+
+<body>
+  <div class="navigation">
+    <nav>
+      <a href="home.html" class="button1">HOME</a>
+      <a href="collection.html" class="button1">COLLECTION</a>
+      <a href="combat.html" class="button1">COMBAT</a>
+      <a href="signin.html" class="button1">SIGN IN</a>
+    </nav>
+  </div>
+
+  <div class="toggle-container">
+    <button id="toggle-dark-mode">Dark Mode</button>
+  </div>
+
+  <div class="container">
+
+  <div class="combat-section">
+    <h1>Combat Arena</h1>
+
+    <div class="combatants">
+
+      <div class="fighter" id="fighter1">
+        <img src="TheBirdOfVenus.jpg" alt="Fighter 1" class="fighter-img">
+        <h3 id="fighter1-name">Venus</h3>
+        <div class="health-bar-container">
+          <div class="health-bar" id="fighter1-health"></div>
+        </div>
+        <p id="fighter1-hp">100 HP</p>
+      </div>
+
+      <span class="vs">VS</span>
+
+      <div class="fighter" id="fighter2">
+        <img src="TheBaptismofChrist.jpg" alt="Fighter 2" class="fighter-img">
+        <h3 id="fighter2-name">Jesus</h3>
+        <div class="health-bar-container">
+          <div class="health-bar" id="fighter2-health"></div>
+        </div>
+        <p id="fighter2-hp">80 HP</p>
+      </div>
+    </div>
+
+    <button id="start-combat">Start Combat</button>
+
+    <div class="combat-log">
+      <h3>Combat Log:</h3>
+      <div id="log-container"></div>
+    </div>
+  </div>
+  </div>
+
+
+</body>
+
+</html>
