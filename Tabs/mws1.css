@@ -1,0 +1,310 @@
+* {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.body, .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: rgb(255, 255, 255);
+}
+
+h1 {
+  margin: 0;
+  color: rgb(0, 0, 0);
+}
+
+.button1 {
+  padding: 20px 40px;
+  margin: 0px;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+  border-radius: 0px;
+  transition: background-color 0.3s;
+}
+
+.button {
+  padding: 10px 20px;
+  margin: 20px;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  transition: background-color 0.3s;
+}
+
+.button1:hover {
+  background-color: rgb(175, 175, 175);
+}
+
+.button:hover {
+  background-color: darkred;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 20px;
+  width: 80%;
+  max-width: 800px;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.card {
+  width: 100%;
+  padding-top: 100%;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.card img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.card:hover img {
+  transform: scale(1.05);
+}
+
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  text-align: center;
+}
+
+.lightbox:target {
+  display: flex;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 80%;
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
+
+.lightbox-content img {
+  width: 100%;
+  max-height: 80vh;
+  border-radius: 10px;
+}
+
+.lightbox-content p {
+  margin-top: 10px;
+  font-size: 1.2em;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  color: white;
+  font-size: 2em;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navigation {
+  padding: 20px 100px;
+  margin: 0px;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
+  border-radius: 0px;
+  transition: background-color 0.3s;
+}
+
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+input[type="email"], input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.error-message {
+  color: rgb(154, 154, 154);
+  font-size: 0.9em;
+  display: 1;
+}
+
+.error-message.visible {
+  display: block;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.combat-section {
+  text-align: center;
+  margin: 20px;
+}
+
+.combatants {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.fighter {
+  text-align: center;
+}
+
+.fighter-img {
+  width: 100px;
+  height: auto;
+}
+
+.health-bar-container {
+  width: 100px;
+  height: 20px;
+  background: #ccc;
+  margin: 10px auto;
+  position: relative;
+  border: 1px solid #000;
+}
+
+.health-bar {
+  height: 100%;
+  background: green;
+  width: 100%;
+  position: absolute;
+  transition: width 0.3s ease;
+}
+
+.vs {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0 20px;
+}
+
+.combat-log {
+  margin-top: 20px;
+  text-align: left;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #f9f9f9;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  height: 200px;
+  overflow-y: auto;
+}
+
+#log-container {
+  font-family: monospace;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+footer {
+  background-color: white;
+  color: black;
+}
+
+body[data-theme="dark"] {
+  background-color: black;
+  color: rgb(255, 255, 255);
+}
+
+footer[data-theme="dark"] {
+  background-color: grey;
+  color: white;
+}
+
+.toggle-container {
+  text-align: center;
+  margin: 20px;
+}
+
+#toggle-dark-mode {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+}
+
+body[data-theme="dark"] #toggle-dark-mode {
+  background-color: #444;
+  color: white;
+  border: 1px solid #666;
+}
+
+body[data-theme="dark"] .navigation {
+  background-color: black;
+  color: #fff;
+}
+
+body[data-theme="dark"] .container {
+  background-color: black;
+  color: #fff;
+}
+
+body[data-theme="dark"] .foot {
+  background-color: black;
+  color: #fff;
+}
+
+body[data-theme="dark"] .button1 {
+  background-color: black;
+  color: #fff;
+  border-color: black;
+}
+
+body[data-theme="dark"] .combat-log {
+  color: white;
+  background-color: black;
+}
